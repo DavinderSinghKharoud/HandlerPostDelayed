@@ -18,17 +18,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void StartRepeating(View view) {
-        handler.postDelayed( mToastRunnable, 5000);
+        handler.postDelayed(mToastRunnable, 4000);
 
     }
 
     public void StopRepeating(View view) {
+
+        handler.removeCallbacks(mToastRunnable);
     }
 
     private Runnable mToastRunnable = new Runnable() {
         @Override
         public void run() {
             Toast.makeText(MainActivity.this, "This is delayed", Toast.LENGTH_SHORT).show();
+        handler.postDelayed(this, 4000);
         }
     };
 
